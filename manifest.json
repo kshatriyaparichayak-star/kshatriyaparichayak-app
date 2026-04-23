@@ -1,0 +1,8 @@
+{
+  "name": "Kshatriyaparichayak",
+  "short_name": "Rajput",
+  "start_url": "/public/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff6600"
+}
