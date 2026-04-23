@@ -21,4 +21,29 @@ const provider = new GoogleAuthProvider();
 getRedirectResult(auth)
   .then((result) => {
     if (result) {
-      const user = result
+      const user = result.user;
+
+      console.log("Login Success ✅", user);
+
+      // 👇 UI update (blank screen fix)
+      document.body.innerHTML = `
+        <h1>Welcome ${user.displayName}</h1>
+        <p>${user.email}</p>
+        <img src="${user.photoURL}" width="100"/>
+      `;
+    }
+  })
+  .catch((error) => {
+    console.error("Login Error ❌", error);
+  });
+
+// 🔘 Button click login
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("loginBtn");
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      signInWithRedirect(auth, provider);
+    });
+  }
+});
